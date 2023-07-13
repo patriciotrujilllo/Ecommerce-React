@@ -10,19 +10,27 @@ body {
     margin: 0 auto;
     font-family: 'Lato';
 }
-#root{
-    display: flex;
-    justify-content: center ;
-}
+
 img{
     max-width: 90%;
     padding: 10px;
 }
 
-.container{
-    width: 80%;
+header{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+header >h1 {
+    padding-bottom: 30px;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .item-container{
@@ -30,7 +38,7 @@ img{
     grid-template-columns: repeat(
         auto-fit,
         minmax(
-            950px,
+            250px,
             1fr
         )
         );
@@ -40,25 +48,24 @@ img{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .item:hover{
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
 }
 .info-product{
-    padding: 30px 30px;
+    width: 100%;
+    padding: 20px 20px;
+    font-size: 15px;
 }
-.info-product{
-    font-size: 40px;
-}
+
 .info-product button{
-    width: 10rem;
-    height: 5rem;
-    font-size: large;
+    right: 0%;
 }
 
 .item img{
-    width: 80%;
-    height: 550px;
+    width: 100%;
+    height: 300px;
     text-align: center;
     object-fit: contain;
     border-radius: 40px;
@@ -66,9 +73,14 @@ img{
 
 .item figure{
     overflow: hidden;
-    width: 40%;
+    width: 100%;
 }
 
 .item:hover img{
     transform: scale(1.2);
+}
+.separador{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
