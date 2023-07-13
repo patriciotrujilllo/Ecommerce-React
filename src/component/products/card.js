@@ -1,6 +1,5 @@
-//import './card.css'
-//import './cardContain.css'
 import '../../styles.css'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 export const Cards = ({props}) =>{
     return (
@@ -15,9 +14,11 @@ export const Cards = ({props}) =>{
                 <h2>{props.category}</h2>
                 <h4>{props.title}</h4>
                 
-            
-                <span>Price : ${props.price}</span>
-                <button type="button">Agregar producto</button>
+            <div className='separador'>
+            <span>Price : ${props.price}</span>
+                <button type="button"><AiOutlineShoppingCart size='2rem'/></button>
+            </div>
+                
                 
             </div>
         </div>
