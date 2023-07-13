@@ -1,0 +1,74 @@
+*::after,
+*::before,
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    font-family: 'Lato';
+}
+#root{
+    display: flex;
+    justify-content: center ;
+}
+img{
+    max-width: 90%;
+    padding: 10px;
+}
+
+.container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-container{
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(
+            950px,
+            1fr
+        )
+        );
+    gap:1rem;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.item:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+}
+.info-product{
+    padding: 30px 30px;
+}
+.info-product{
+    font-size: 40px;
+}
+.info-product button{
+    width: 10rem;
+    height: 5rem;
+    font-size: large;
+}
+
+.item img{
+    width: 80%;
+    height: 550px;
+    text-align: center;
+    object-fit: contain;
+    border-radius: 40px;
+}
+
+.item figure{
+    overflow: hidden;
+    width: 40%;
+}
+
+.item:hover img{
+    transform: scale(1.2);
+}
