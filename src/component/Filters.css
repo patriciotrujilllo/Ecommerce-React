@@ -1,0 +1,10 @@
+.filter{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.filter > div{
+    display: flex;
+    gap: 1rem;
+}
