@@ -1,13 +1,14 @@
-import { useState,useId } from 'react'
+import { useId,useContext } from 'react'
+import { FiltersContext } from '../context/filters'
 import './Filters.css'
 
-export const Filters = ({setFilters}) =>{
-    const [amountfilter,setAmountFilter] = useState(0)
+export const Filters = () =>{
     const idFilterPrice=useId()
     const idFilterCategory=useId()
 
+    const {filters,setFilters} = useContext(FiltersContext)
+
     const handleChangePrice = (e) =>{
-        setAmountFilter(e.target.value)
 
         setFilters(prevState=>({
             ...prevState,
@@ -33,8 +34,9 @@ export const Filters = ({setFilters}) =>{
                     min='0'
                     max='1000'
                     onChange={handleChangePrice}
+                    value={filters.price}
                 />
-                <span>${amountfilter}</span>
+                <span>${filters.price}</span>
             </div>
             
 
