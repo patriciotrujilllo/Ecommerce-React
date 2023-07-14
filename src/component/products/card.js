@@ -1,5 +1,5 @@
 import '../../styles.css'
-import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { MdShoppingCartCheckout } from 'react-icons/md'
 
 export const Cards = ({props}) =>{
     return (
@@ -16,7 +16,7 @@ export const Cards = ({props}) =>{
                 
             <div className='separador'>
             <span>Price : ${props.price}</span>
-                <button type="button"><AiOutlineShoppingCart size='2rem'/></button>
+                <button type="button"><MdShoppingCartCheckout size='2rem'/></button>
             </div>
                 
                 
