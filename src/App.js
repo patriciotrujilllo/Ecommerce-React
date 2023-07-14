@@ -1,16 +1,14 @@
 import { getAllProducts } from "./services/productServices"
-import { useState,useEffect } from "react"
+import { useState,useEffect,useContext } from "react"
 import { Mapeo } from "./component/products/Mapeo.js"
 import { Header } from "./component/Header.js"
+import { FiltersContext } from "./context/filters"
 import './styles.css'
 
 function App() {
 
   const [products,setProducts] = useState([])
-  const [filters,setFilters] = useState({
-    category: 'all',
-    price: 0
-  })
+  
 
   useEffect(()=>{
 
@@ -21,12 +19,31 @@ function App() {
 
   },[])
 
-  const filterProducts = (products) =>{
 
-    return products.filter(producto=>(filters.category==='all' || producto.category===filters.category )).filter(producto=>(filters.price === 0 || producto.price>=filters.price ))
-    
+  const useFilters = () =>{
 
+    const {filters,setFilters} = useContext(FiltersContext)
+
+    const filterProducts = (products) =>{
+
+      return (
+        
+        products.filter(producto=>(
+          filters.category==='all' || producto.category===filters.category ))
+          .filter(producto=>(filters.price === 0 || producto.price>=filters.price ))
+      ) 
+      
+    }
+    return {
+      filterProducts,
+      setFilters
+
+    }
   }
+
+  const {filterProducts,setFilters} = useFilters(products)
+
+  
 
   const filtrado = filterProducts(products)
   
