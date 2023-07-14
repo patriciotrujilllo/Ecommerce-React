@@ -1,0 +1,35 @@
+.cart{
+    padding: 30px;
+    display: none;
+    width: 200px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.66);
+    transition: all 0.3s ease;
+    color: white;
+    text-align: center;
+}
+.cart footer{
+    padding: 5px;
+}
+.cart-button{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+.cart-button:hover {
+    scale: 1.1;
+}
+.cart-button ~ input:checked ~ .cart{
+    height: 100%;
+    display: block;
+    
+}
