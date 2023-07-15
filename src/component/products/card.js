@@ -1,7 +1,13 @@
 import '../../styles.css'
-import { MdShoppingCartCheckout } from 'react-icons/md'
+import { MdShoppingCartCheckout, MdOutlineRemoveShoppingCart } from 'react-icons/md'
+import {useCart} from '../../hooks/useCart'
 
 export const Cards = ({props}) =>{
+
+    const {addToCart, cart, removeFromCart} = useCart()
+
+    const isInCart = cart.some(item=> item.id=== props.id)
+
     return (
         <>
     
@@ -16,7 +22,18 @@ export const Cards = ({props}) =>{
                 
             <div className='separador'>
             <span>Price : ${props.price}</span>
-                <button type="button"><MdShoppingCartCheckout size='2rem'/></button>
+                <button onClick={()=>{
+                    isInCart ? removeFromCart(props) : addToCart(props)
+                                    }
+                    }>
+                {
+                    isInCart?
+                    <MdOutlineRemoveShoppingCart size='2rem'/>: 
+                    <MdShoppingCartCheckout size='2rem'/>
+                }
+                    
+                    
+                </button>
             </div>
                 
                 
@@ -25,18 +42,3 @@ export const Cards = ({props}) =>{
         </>
     )
     }
-
-/*
-{
-"id": 1,
-"title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-"price": 109.95,
-"description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-"category": "men's clothing",
-"image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-"rating": {
-"rate": 3.9,
-"count": 120
-}
-}
-*/
