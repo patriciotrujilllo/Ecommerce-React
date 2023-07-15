@@ -5,6 +5,7 @@ import { Header } from "./component/Header.js"
 import './styles.css'
 import { useFilters } from "./hooks/useFilters"
 import { Cart } from "./component/Cart"
+import { CartProvider } from "./context/cart"
 
 function App() {
 
@@ -24,13 +25,11 @@ function App() {
   const filtrado = filterProducts(products)
   
   return (
-    <div className="container-body">
-      <Cart />
-      <Header/>
-      <Mapeo filtrado={filtrado}/>
-    </div>
-    
-      
+    <CartProvider>
+        <Cart/>
+        <Header/>
+        <Mapeo filtrado={filtrado}/>
+    </CartProvider>
     
   )
   }
