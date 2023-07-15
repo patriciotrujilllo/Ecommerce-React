@@ -1,10 +1,32 @@
 import {MdOutlineRemoveShoppingCart,MdShoppingCart} from 'react-icons/md'
 import { useId } from 'react'
 import './Cart.css'
+import { useCart } from '../hooks/useCart'
 
 export const Cart = () =>{
     const idCart = useId()
+    const {cart,addToCart,cleanCart} = useCart()
 
+    const ItemOfCart = ({product,addToCart}) =>{
+        return (
+            <>
+                <li>
+                        <img src={product.image} alt={product.title} />
+                    </li>
+                    <div>
+                        <strong>{product.title}</strong> -{product.price}
+                    </div>
+                    
+                    <footer>
+                        <small>
+                            cantidad: {product.cantidad}
+                        </small>
+                        <button onClick={addToCart}>+</button>
+                    </footer>
+            </>
+        )
+    }
+    console.log(cart)
     return (
         <>
             <label className='cart-button' htmlFor={idCart}>
@@ -15,21 +37,13 @@ export const Cart = () =>{
 
             <aside className='cart'>
                 <ul>
-                    <li>
-                        <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="Shirt" />
-                    </li>
-                    <div>
-                        <strong>Shirt's Men</strong> -22.3
-                    </div>
-                    
-                    <footer>
-                        <small>
-                            Cantidad: 1
-                        </small>
-                        <button>+</button>
-                    </footer>
+                    {
+                        cart.map(product=>(
+                            <ItemOfCart key={product.id} product={product} addToCart={()=>addToCart(product)}/>
+                        ))
+                    }
                 </ul>
-                <button>
+                <button onClick={cleanCart}>
                     <MdOutlineRemoveShoppingCart size='1.5rem'/>
                 </button>
             </aside>
