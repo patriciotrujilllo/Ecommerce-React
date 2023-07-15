@@ -26,7 +26,6 @@ export const Cart = () =>{
             </>
         )
     }
-    console.log(cart)
     return (
         <>
             <label className='cart-button' htmlFor={idCart}>
