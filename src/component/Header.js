@@ -1,10 +1,9 @@
-import {Filters} from './Filters.js'
-
+import {Cart} from './Cart'
 export const Header = () =>{
     return (
-        <header>
+        <header class='header'>
             <h1>React Fake Store</h1>
-            <Filters/>
+            <Cart />
         </header>
     )
 }
