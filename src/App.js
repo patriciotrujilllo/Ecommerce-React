@@ -4,8 +4,8 @@ import { Mapeo } from "./component/products/Mapeo.js"
 import { Header } from "./component/Header.js"
 import './styles.css'
 import { useFilters } from "./hooks/useFilters"
-import { Cart } from "./component/Cart"
 import { CartProvider } from "./context/cart"
+import { Filters } from "./component/Filters"
 
 function App() {
 
@@ -26,9 +26,12 @@ function App() {
   
   return (
     <CartProvider>
-        <Cart/>
+      <div className="container">
         <Header/>
+        <Filters/>
         <Mapeo filtrado={filtrado}/>
+      </div>
+      
     </CartProvider>
     
   )
