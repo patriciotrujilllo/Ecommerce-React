@@ -6,7 +6,7 @@
     right: 0;
     top: 0;
     background: rgba(0, 0, 0, 0.66);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
     color: white;
     text-align: center;
     overflow: auto
