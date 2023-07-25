@@ -31,14 +31,17 @@ export const Cart = () =>{
                                 }>+</button> 
                         </div>
 
-                        <div className='price-item'>{product.price}</div>
+                        <div className='price-item'>${product.price}</div>
 
-                        <div className='total-price-item'>{totalperPorduct}</div>
+                        <div className='total-price-item'>${totalperPorduct}</div>
                         
                 </li>
             </>
         )
     }
+
+    const total = cart.reduce((accumulator, product) => accumulator + product.cantidad * product.price, 0);
+
     return (
         <>
             <div className='cart-button'  onClick={()=> setIsOpen(!isOpen)}>
@@ -59,9 +62,13 @@ export const Cart = () =>{
                         ))
                     }
                 </ul>
-                <button onClick={cleanCart}>
-                    <MdOutlineRemoveShoppingCart size='1.5rem'/>
-                </button>
+                <footer className='footer'>
+                    <div className='total'>Total: ${total.toFixed(2)}</div>
+                    <button onClick={cleanCart}>
+                        <MdOutlineRemoveShoppingCart size='1.5rem'/>
+                    </button>
+                </footer>
+                
             </aside>
         </>  
         
