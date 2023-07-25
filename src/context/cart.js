@@ -42,6 +42,20 @@ const reducer = (state,action) =>{
                 updateStateLocalStorage(newState)
                 return newState
             }
+            case 'SUBTRACT_TO_CART': {
+
+                const productInCart = state.findIndex(item=> item.id === action.payload.id)
+
+                if(state[productInCart].cantidad>1){
+                    const newCart = structuredClone(state)
+                    newCart[productInCart].cantidad -=1
+                    updateStateLocalStorage(newCart)
+                    return newCart
+                }
+                const newState = state.filter(item => item.id !== action.payload.id)
+                updateStateLocalStorage(newState)
+                return newState
+            }
             case 'CLEAN_CART': {
                 updateStateLocalStorage([])
                 return []
@@ -62,6 +76,10 @@ export const CartProvider = ({children}) =>{
         type: 'ADD_TO_CART',
         payload: product
     })
+    const subtractToCart = product => dispatch({
+        type: 'SUBTRACT_TO_CART',
+        payload: product
+    })
     const cleanCart = () =>dispatch({
         type: 'CLEAN_CART'
     })
@@ -75,6 +93,7 @@ export const CartProvider = ({children}) =>{
             cart:state,
             addToCart,
             cleanCart,
+            subtractToCart,
             removeFromCart
         }}>
             {children}
