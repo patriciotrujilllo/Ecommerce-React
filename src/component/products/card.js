@@ -7,34 +7,36 @@ export const Cards = ({props}) =>{
     const {addToCart, cart, removeFromCart} = useCart()
 
     const isInCart = cart.some(item=> item.id=== props.id)
+    const caratersLimit = props.title.slice(0,30)
 
     return (
         <>
     
         <div className='item'>
-            <figure>
+
+            <figure className='figure-items'>
                 <img src={props.image} alt="" />
             </figure>
             
             <div className='info-product'>
                 <h2>{props.category}</h2>
-                <h4>{props.title}</h4>
-                
+                <h4>{caratersLimit}</h4>
+                </div>  
             <div className='separador'>
-            <span>Price : ${props.price}</span>
-                <button onClick={()=>{
-                    isInCart ? removeFromCart(props) : addToCart(props)
-                                    }
-                    }>
-                {
-                    isInCart?
-                    <MdOutlineRemoveShoppingCart size='2rem'/>: 
-                    <MdShoppingCartCheckout size='2rem'/>
-                }
-                    
-                    
-                </button>
-            </div>
+                <span style={{fontWeight: 'bold'}}>${props.price}</span>
+                    <button onClick={()=>{
+                        isInCart ? removeFromCart(props) : addToCart(props)
+                                        }
+                        }>
+                    {
+                        isInCart?
+                        <MdOutlineRemoveShoppingCart size='2rem'/>: 
+                        <MdShoppingCartCheckout size='2rem'/>
+                    }
+                        
+                        
+                    </button>
+            
                 
                 
             </div>
