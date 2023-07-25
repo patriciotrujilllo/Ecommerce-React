@@ -1,44 +1,52 @@
 import {MdOutlineRemoveShoppingCart,MdShoppingCart} from 'react-icons/md'
-import { useId } from 'react'
+import { useState } from 'react'
 import './Cart.css'
 import { useCart } from '../hooks/useCart'
 
 export const Cart = () =>{
-    const idCart = useId()
-    const {cart,addToCart,cleanCart} = useCart()
+    const {cart,addToCart,cleanCart,subtractToCart,removeFromCart} = useCart()
+    const [isOpen,setIsOpen] = useState(false)
 
-    const ItemOfCart = ({product,addToCart}) =>{
+    const ItemOfCart = ({product,addToCart,subtractToCart,removeFromCart}) =>{
         return (
             <>
-                <li>
-                        <img src={product.image} alt={product.title} />
-                    </li>
-                    <div>
-                        <strong>{product.title}</strong> -{product.price}
-                    </div>
-                    
-                    <footer>
-                        <small>
-                            cantidad: {product.cantidad}
-                        </small>
-                        <button onClick={addToCart}>+</button>
-                    </footer>
+                <li className='cart-item'>
+                        
+                            <img className='img-item' src={product.image} alt={product.title} />
+                        
+                        
+
+                        <strong className='title-item'>{product.title}</strong>
+                        <button className='remove-item' onClick={removeFromCart}>x</button>
+                        <div className='contador-item'>
+                            <button onClick={subtractToCart}> - </button>{product.cantidad}<button onClick={addToCart}>+</button> 
+                        </div>
+
+                        <div className='price-item'>{product.price}</div>
+
+                        <div className='total-price-item'>{product.price}</div>
+                        
+                </li>
             </>
         )
     }
     return (
         <>
-            <label className='cart-button' htmlFor={idCart}>
+            <div className='cart-button'  onClick={()=> setIsOpen(!isOpen)}>
                 <MdShoppingCart size='2rem'/>
-            </label>
+            </div>
 
-            <input id={idCart} type="checkbox" hidden/>
 
-            <aside className='cart'>
+            <aside className= "cart" style={{ right: isOpen ? '0' : '-100%' }}>
                 <ul>
                     {
                         cart.map(product=>(
-                            <ItemOfCart key={product.id} product={product} addToCart={()=>addToCart(product)}/>
+                            <ItemOfCart key={product.id} 
+                            product={product} 
+                            addToCart={()=>addToCart(product)} 
+                            subtractToCart={()=>subtractToCart(product)} 
+                            removeFromCart={()=>removeFromCart(product)}
+                            />
                         ))
                     }
                 </ul>
