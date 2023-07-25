@@ -1,15 +1,84 @@
 .cart{
-    padding: 30px;
-    display: none;
-    width: 200px;
-    position: fixed;
-    right: 0;
+    width: 100%;
+    height: 100%;
     top: 0;
-    background: rgba(0, 0, 0, 0.66);
-    transition: transform 0.3s ease;
-    color: white;
+    padding-top: 3rem;
+    position: fixed;
+    background: white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    z-index: 20;
+    transition-property: all;
+    transition-duration: 300ms;
+    border: 1px solid black;
+}
+.cart li{
+    display:grid;
+    gap:0.5rem;
+    padding: 1.3rem 0 1.3rem 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.319);
+    grid-template-areas: "img-item title-item title-item remove-item" 
+                "img-item contador-item price-item total-price-item";
+}
+
+
+.img-item{
+    grid-area: img-item;
+    width: 80px;
+    padding: 0;
+    aspect-ratio: 1/1;
+}
+
+.title-item{
+    grid-area: title-item;
+    justify-self: left;
+}
+.contador-item{
+    grid-area: contador-item;
+    border: 1px solid rgba(0, 0, 0, 0.392);
     text-align: center;
-    overflow: auto
+    justify-self: left;
+}
+.price-item{
+    grid-area: price-item;
+    justify-self: left;
+}
+.total-price-item{
+    grid-area: total-price-item;
+}
+
+.img-item-container{
+    display: flex;
+}
+.remove-item{
+    grid-area: remove-item;
+    justify-self: right;
+    background: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 1.3rem;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.remove-item:hover{
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    background: rgba(128, 128, 128, 0.137);
+}
+
+.contador-item button{
+    border: none;
+    padding: 3px 7px 3px 7px;
+    font-size: 1.2rem;
+    background-color: white;
 }
 .cart footer{
     padding: 5px;
@@ -29,11 +98,24 @@
 .cart-button:hover {
     scale: 1.1;
 }
-.cart-button ~ input:checked ~ .cart{
-    height: 100%;
-    display: block;
+
+@media screen and (min-width: 768px) {
+    .cart{
+        width: 35vw;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .cart{
+        padding-left: 35px;
+        padding-right: 35px;
+    }
     
 }
-.cart img{
-    aspect-ratio: auto;
+
+@media screen and (min-width: 1280px) {
+    .cart{
+        max-width: 30vw;
+    }
+    
 }
+
