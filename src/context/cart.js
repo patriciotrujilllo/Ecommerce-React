@@ -12,6 +12,7 @@ const updateStateLocalStorage = newState =>{
 
 const reducer = (state,action) =>{
         switch(action.type){
+            
             case 'ADD_TO_CART': {
 
                 const productInCart = state.findIndex(item=> item.id === action.payload.id)
