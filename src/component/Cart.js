@@ -1,5 +1,5 @@
 import {MdOutlineRemoveShoppingCart,MdShoppingCart} from 'react-icons/md'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Cart.css'
 import { useCart } from '../hooks/useCart'
 
@@ -8,23 +8,32 @@ export const Cart = () =>{
     const [isOpen,setIsOpen] = useState(false)
 
     const ItemOfCart = ({product,addToCart,subtractToCart,removeFromCart}) =>{
+        const [totalperPorduct,setTotalperPorduct] = useState(product.cantidad * product.price)
+
+        useEffect(()=>{
+            setTotalperPorduct(parseFloat((product.cantidad*product.price).toFixed(2)))
+        },[product.cantidad, product.price])
+
+
         return (
             <>
                 <li className='cart-item'>
                         
-                            <img className='img-item' src={product.image} alt={product.title} />
-                        
-                        
-
+                        <img className='img-item' src={product.image} alt={product.title} />
                         <strong className='title-item'>{product.title}</strong>
                         <button className='remove-item' onClick={removeFromCart}>x</button>
                         <div className='contador-item'>
-                            <button onClick={subtractToCart}> - </button>{product.cantidad}<button onClick={addToCart}>+</button> 
+                            <button onClick={
+                            subtractToCart
+                            }> - </button>{product.cantidad}
+                            <button onClick={
+                                addToCart
+                                }>+</button> 
                         </div>
 
                         <div className='price-item'>{product.price}</div>
 
-                        <div className='total-price-item'>{product.price}</div>
+                        <div className='total-price-item'>{totalperPorduct}</div>
                         
                 </li>
             </>
