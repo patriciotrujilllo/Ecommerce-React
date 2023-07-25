@@ -98,6 +98,12 @@
 .cart-button:hover {
     scale: 1.1;
 }
+.footer{
+    display: flex;
+    background-color: pink;
+    justify-content: space-between;
+    align-items: center;
+}
 
 @media screen and (min-width: 768px) {
     .cart{
