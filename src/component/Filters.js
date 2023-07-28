@@ -1,5 +1,6 @@
 import { useId,useContext } from 'react'
 import { FiltersContext } from '../context/filters'
+import Accordion from 'react-bootstrap/Accordion';
 import './Filters.css'
 
 export const Filters = () =>{
@@ -18,16 +19,33 @@ export const Filters = () =>{
 
     const handleChangeCategory = (e) =>{
 
-        setFilters(prevState=>({
-            ...prevState,
-            category: e.target.value
-        }))
+        const checked  = e.target.checked 
+
+        if(checked ){
+            setFilters(prevState=>({
+                ...prevState,
+                category: e.target.value
+            }))
+        }else{
+            setFilters(prevState=>({
+                ...prevState,
+                category: 'all'
+            }))
+        }
+
+        
     }
 
     return (
+        <>
+        
+        
         <section className='filter'>
-            <div>
-                <label htmlFor={idFilterPrice}>Precio</label>
+            <Accordion>
+                <Accordion.Item eventKey="0">
+                    <Accordion.Header>Price</Accordion.Header>
+                    <Accordion.Body>
+                    <label htmlFor={idFilterPrice}>Precio</label>
                 <input 
                     type='range'
                     id={idFilterPrice}
@@ -37,20 +55,30 @@ export const Filters = () =>{
                     value={filters.price}
                 />
                 <span>${filters.price}</span>
-            </div>
-            
-
-            <div>
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="1">
+                <Accordion.Header>Category</Accordion.Header>
+                <Accordion.Body>
                 <label htmlFor={idFilterCategory}>Categoria</label>
-                <select id={idFilterCategory} onChange={handleChangeCategory}>
-                    <option value='all'>Todas</option>
-                    <option value="men's clothing">Ropa de Hombre</option>
-                    <option value='jewelery'>jewelery</option>
+                <div className='category' id={idFilterCategory} onChange={handleChangeCategory}>
+
+                    <input type="radio" id="all" value="all" name="category"/>
+                    <label htmlFor="all">All</label><br />
+
+                    <input type="radio" id="men's clothing" value="men's clothing" name="category"/>
+                    <label htmlFor="men's clothing">men's</label><br />
+
+                    <input type="radio" id="jewelery" value="jewelery" name="category"/>
+                    <label htmlFor="jewelery">jewelery</label><br />
 
 
-                </select>
-            </div>
 
+                </div>
+                </Accordion.Body>
+            </Accordion.Item>
+            </Accordion>
         </section>
+        </>
     )
 }
