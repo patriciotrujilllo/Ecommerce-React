@@ -1,4 +1,6 @@
-import {MdOutlineRemoveShoppingCart,MdShoppingCart} from 'react-icons/md'
+import {MdOutlineRemoveShoppingCart} from 'react-icons/md'
+import {AiOutlineShoppingCart} from 'react-icons/ai'
+import {IoIosArrowRoundBack} from 'react-icons/io'
 import { useEffect, useState } from 'react'
 import './Cart.css'
 import { useCart } from '../hooks/useCart'
@@ -45,11 +47,15 @@ export const Cart = () =>{
     return (
         <>
             <div className='cart-button'  onClick={()=> setIsOpen(!isOpen)}>
-                <MdShoppingCart size='2rem'/>
+                <AiOutlineShoppingCart size='2rem'/>
             </div>
 
 
             <aside className= "cart" style={{ right: isOpen ? '0' : '-100%' }}>
+                <div className='button-back' onClick={()=> setIsOpen(!isOpen)}>
+                    <IoIosArrowRoundBack size='2rem' />
+                </div>
+                
                 <ul>
                     {
                         cart.map(product=>(
