@@ -9,9 +9,10 @@ export const useFilters = () =>{
 
     return (
         
-        products.filter(producto=>(
-        filters.category==='all' || producto.category===filters.category ))
+        products
+        .filter(producto=>(filters.category==='all' || producto.category===filters.category ))
         .filter(producto=>(filters.price === 0 || producto.price>=filters.price ))
+        .filter(producto=>(filters.title==='' || producto.title.toLowerCase().includes(filters.title.toLowerCase())))
     ) 
     }
     return {
