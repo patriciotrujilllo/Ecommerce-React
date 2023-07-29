@@ -2,15 +2,15 @@
     width: 100%;
     height: 100%;
     top: 0;
-    padding-top: 3rem;
+    padding-top: 1rem;
     position: fixed;
     background: white;
     padding-left: 1rem;
     padding-right: 1rem;
-    z-index: 20;
     transition-property: all;
-    transition-duration: 300ms;
+    transition-duration: 400ms;
     border: 1px solid black;
+    z-index: 20;
 }
 .cart li{
     display:grid;
@@ -86,17 +86,19 @@
 .cart-button{
     width: 40px;
     height: 40px;
-    position: absolute;
+    /* position: absolute;
     top: 8px;
-    right: 8px;
+    right: 8px; */
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
 }
 .cart-button:hover {
     scale: 1.1;
+}
+.button-back svg{
+    cursor: pointer;
 }
 .footer{
     display: flex;
