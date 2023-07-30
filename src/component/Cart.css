@@ -86,9 +86,6 @@
 .cart-button{
     width: 40px;
     height: 40px;
-    /* position: absolute;
-    top: 8px;
-    right: 8px; */
     cursor: pointer;
     display: flex;
     align-items: center;
