@@ -1,0 +1,28 @@
+.main-description{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "header header"
+                        "figure-description price-description"
+                        "figure-description product-description"
+                        "figure-description product-add";
+    height: 100vh;
+}
+.figure-description{
+    grid-area: figure-description;
+    place-items: center;
+    display: flex;
+    justify-content: center;
+}
+.figure-description img{
+    width: 25rem;
+}
+.price-description{
+    grid-area: price-description;
+}
+.product-description{
+    grid-area: product-description;
+}
+.product-add{
+    grid-area: product-add;
+}
