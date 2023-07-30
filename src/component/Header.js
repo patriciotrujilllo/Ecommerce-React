@@ -16,7 +16,7 @@ export const Header = () =>{
         }))
     }
     return (
-        <header class='header'>
+        <header className='header'>
             <h1>Fake Store</h1>
             <nav className='nav'>
                 <Form>
