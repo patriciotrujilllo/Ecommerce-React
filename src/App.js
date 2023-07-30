@@ -1,38 +1,22 @@
-import { getAllProducts } from "./services/productServices"
-import { useState,useEffect} from "react"
-import { Mapeo } from "./component/products/Mapeo.js"
-import { Header } from "./component/Header.js"
-import './styles.css'
-import { useFilters } from "./hooks/useFilters"
-import { CartProvider } from "./context/cart"
-import { Filters } from "./component/Filters"
+import {Suspense} from "react"
+import {Products} from './Product'
+import { ProductDescription } from "./ProductDescription"
+import { BrowserRouter,Route,Routes} from "react-router-dom"
+import { useProducts } from "./hooks/useProducts"
 
 function App() {
 
-  const [products,setProducts] = useState([])
-  
-  useEffect(()=>{
+  const products = useProducts()
 
-    getAllProducts()
-    .then(res=>{
-      setProducts(res)
-    })
-
-  },[])
-
-  const {filterProducts} = useFilters(products)
-
-  const filtrado = filterProducts(products)
-  
-  return (
-    <CartProvider>
-      <div className="container">
-        <Header/>
-        <Filters/>
-        <Mapeo filtrado={filtrado}/>
-      </div>
-      
-    </CartProvider>
+  return(
+    <Suspense fallback={<div>Loading...</div>}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Products />}/>
+          <Route path="/product/:id" element={<ProductDescription products={products}/>}/>
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
     
   )
   }
