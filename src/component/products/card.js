@@ -1,6 +1,7 @@
 import '../../styles.css'
 import { MdShoppingCartCheckout, MdOutlineRemoveShoppingCart } from 'react-icons/md'
 import {useCart} from '../../hooks/useCart'
+import { Link } from 'react-router-dom'
 
 export const Cards = ({props}) =>{
 
@@ -13,10 +14,13 @@ export const Cards = ({props}) =>{
         <>
     
         <div className='item'>
-
-            <figure className='figure-items'>
-                <img src={props.image} alt="" />
-            </figure>
+            <Link to={`/product/${props.id}`}>
+                <figure className='figure-items'>
+                    
+                        <img src={props.image} alt="" />
+                    
+                </figure>
+            </Link>
             
             <div className='info-product'>
                 <h2>{props.category}</h2>
