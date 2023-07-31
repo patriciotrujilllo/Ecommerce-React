@@ -2,6 +2,7 @@ import {Cart} from './Cart'
 import {BiUserCircle} from 'react-icons/bi'
 import Form from 'react-bootstrap/Form';
 import {useFilters} from '../hooks/useFilters'
+import './Header.css'
 
 
 export const Header = () =>{
