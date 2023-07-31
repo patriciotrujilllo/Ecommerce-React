@@ -25,7 +25,7 @@ export function Products() {
 
     return (
 
-        <div className="container">
+        <div className="container-main">
         <Header/>
         <Filters/>
         <Mapeo filtrado={filtrado}/>
