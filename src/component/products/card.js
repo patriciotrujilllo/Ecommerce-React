@@ -29,7 +29,7 @@ export const Cards = ({props}) =>{
             <div className='separador'>
                 <span style={{fontWeight: 'bold'}}>${props.price}</span>
                     <button onClick={()=>{
-                        isInCart ? removeFromCart(props) : addToCart(props)
+                        isInCart ? removeFromCart(props) : addToCart(props,1)
                                         }
                         }>
                     {
