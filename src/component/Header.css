@@ -1,0 +1,26 @@
+.header{
+    display: grid;
+    align-items: center;
+    padding: 40px;
+    grid-area: header;
+    background-color: rgba(255, 192, 203, 0.558);
+    height: 136px;
+}
+.header h1{
+    grid-column: 1/2;
+    width: 80%;
+}
+.header .nav{
+    grid-column: 2/3;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.nav .icons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.nav form{
+    display: flex;
+}
