@@ -61,7 +61,7 @@ export const Cart = () =>{
                         cart.map(product=>(
                             <ItemOfCart key={product.id} 
                             product={product} 
-                            addToCart={()=>addToCart(product)} 
+                            addToCart={()=>addToCart(product,1)} 
                             subtractToCart={()=>subtractToCart(product)} 
                             removeFromCart={()=>removeFromCart(product)}
                             />
