@@ -3,13 +3,11 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
-.container{
+.container-main{
     width: 100%;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 1fr auto;
@@ -34,30 +32,8 @@
 .header{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    align-items: center;
-    padding: 40px;
-    grid-area: header;
-    background-color: rgba(255, 192, 203, 0.558);
 }
 
-.header h1{
-    grid-column: 1/2;
-    width: 80%;
-}
-.header .nav{
-    grid-column: 2/3;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-.nav .icons{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-.nav form{
-    display: flex;
-}
 
 .item-container{
     display: grid;
