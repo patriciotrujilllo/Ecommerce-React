@@ -12,15 +12,15 @@ const updateStateLocalStorage = newState =>{
 
 const reducer = (state,action) =>{
         switch(action.type){
-            
+                
             case 'ADD_TO_CART': {
-
-                const productInCart = state.findIndex(item=> item.id === action.payload.id)
+                const {product, quantity} = action.payload
+                const productInCart = state.findIndex(item=> item.id === product.id)
 
                 if(productInCart>=0){
-                    //producto esta en el carrito, por lo tanto se debe agregar a la cantidad +1
                     const newCart = structuredClone(state)
-                    newCart[productInCart].cantidad +=1
+                    newCart[productInCart].cantidad +=quantity
+
                     ///Otra manera de hacerlo seria con un map
                     /*
                     const newState=state.map(item=>{
@@ -31,15 +31,13 @@ const reducer = (state,action) =>{
                             }
                             return item
                         }
-                    })
-                    
-                    
-                    */
+                    })*/
+
                     updateStateLocalStorage(newCart)
                     return newCart
                 }
                 //en el caso de que no este el producto entoces se agrega directamente al carrito
-                const newState = [...state,{...action.payload, cantidad:1}]
+                const newState = [...state,{...product, cantidad:quantity}]
                 updateStateLocalStorage(newState)
                 return newState
             }
@@ -73,9 +71,16 @@ const reducer = (state,action) =>{
 export const CartProvider = ({children}) =>{
     const [state, dispatch ] = useReducer(reducer,initialState)
 
-    const addToCart = product => dispatch({
+    // const addToCart = product => dispatch({
+    //     type: 'ADD_TO_CART',
+    //     payload: product
+    // })
+    const addToCart = (product,quantity) => dispatch({
         type: 'ADD_TO_CART',
-        payload: product
+        payload: {
+            product:product,
+            quantity: quantity
+        }
     })
     const subtractToCart = product => dispatch({
         type: 'SUBTRACT_TO_CART',
@@ -93,6 +98,7 @@ export const CartProvider = ({children}) =>{
         <CartContext.Provider value={{
             cart:state,
             addToCart,
+            // addToCartQuantity,
             cleanCart,
             subtractToCart,
             removeFromCart
