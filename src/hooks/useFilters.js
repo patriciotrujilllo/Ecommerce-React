@@ -17,7 +17,8 @@ export const useFilters = () =>{
     }
     return {
         filterProducts,
-        setFilters
+        setFilters,
+        filters
 
     }
 }
