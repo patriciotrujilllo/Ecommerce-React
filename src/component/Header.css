@@ -10,6 +10,9 @@
     grid-column: 1/2;
     width: 80%;
 }
+.header a{
+    text-decoration: none;
+}
 .header .nav{
     grid-column: 2/3;
     width: 100%;
