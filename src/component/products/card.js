@@ -8,7 +8,7 @@ export const Cards = ({props}) =>{
     const {addToCart, cart, removeFromCart} = useCart()
 
     const isInCart = cart.some(item=> item.id=== props.id)
-    const caratersLimit = props.title.slice(0,30)
+    const caratersLimit = props.title.split(" ").slice(0,3).join(" ")
 
     return (
         <>
