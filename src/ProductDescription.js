@@ -34,7 +34,7 @@ export const ProductDescription = ({products}) =>{
                         </div>
                     <button onClick={()=>setQuantity(prevState=>prevState+1)}>+</button>
                     </div>
-                    <button className="Add-cart" onClick={()=>addToCart(product)}>Añadir al carrito</button>
+                    <button className="Add-cart" onClick={()=>addToCart(product,quantity)}>Añadir al carrito</button>
                     
                 </div>
             </div>
