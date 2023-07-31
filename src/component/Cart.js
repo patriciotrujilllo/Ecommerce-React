@@ -27,7 +27,7 @@ export const Cart = () =>{
                         <div className='contador-item'>
                             <button onClick={
                             subtractToCart
-                            }> - </button>{product.cantidad}
+                            }> - </button><div className='number-cart'>{product.cantidad}</div>
                             <button onClick={
                                 addToCart
                                 }>+</button> 
