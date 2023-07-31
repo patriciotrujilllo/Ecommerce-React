@@ -5,10 +5,9 @@ import {useFilters} from '../hooks/useFilters'
 import { Link,useNavigate  } from 'react-router-dom';
 import './Header.css'
 
-
 export const Header = () =>{
 
-    const {setFilters} = useFilters()
+    const {filters ,setFilters} = useFilters()
     const navigate = useNavigate ()
 
     const handleKeyDown = e =>{
@@ -22,16 +21,15 @@ export const Header = () =>{
         }
         
     }
-    return (
+        return (
         <header className='header'>
             <Link to='/'>
                 <h1>Fake Store</h1>
             </Link>
-            
             <nav className='nav'>
                 <Form>
                     <Form.Label></Form.Label>
-                    <Form.Control type="text"  onKeyDown={handleKeyDown}/>
+                    <Form.Control type="text" defaultValue={filters?.title || ''}  onKeyDown={handleKeyDown}/>
                 </Form>
                 <div className='icons'>
                     <BiUserCircle size='2rem'/>
