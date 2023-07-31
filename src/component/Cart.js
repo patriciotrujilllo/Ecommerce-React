@@ -4,6 +4,7 @@ import {IoIosArrowRoundBack} from 'react-icons/io'
 import { useEffect, useState } from 'react'
 import './Cart.css'
 import { useCart } from '../hooks/useCart'
+import { Badge } from "@prismane/core";
 
 export const Cart = () =>{
     const {cart,addToCart,cleanCart,subtractToCart,removeFromCart} = useCart()
@@ -47,7 +48,16 @@ export const Cart = () =>{
     return (
         <>
             <div className='cart-button'  onClick={()=> setIsOpen(!isOpen)}>
+            {cart.length>0 ? (
+            
+            <Badge label={cart.length} style={{zIndex: 0}}>
                 <AiOutlineShoppingCart size='2rem'/>
+            </Badge>
+            ):
+            (<AiOutlineShoppingCart size='2rem'/>
+            
+            )}
+            
             </div>
 
 
