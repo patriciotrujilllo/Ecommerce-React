@@ -21,4 +21,4 @@ Pagina Ecommerce utilizando la api de Fake Store , se puede realizar busqueda po
 - **Cabecera:** La cabecera esta disponible en todas las paginas, por lo tanto el carrito y la busqueda estaran disponibles
 - **Sincronización de Estado:** Los filtros, busquedas, y el carrito de compra estan guardados en estados globales(useContext), para poder ser utilizado en diferentes partes de la aplicacion web.
 - **Persistencia de Datos:** La aplicación permite la persistencia datos de los productos en el carrito de compra en el almacenamiento local del navegador(localStorage). Al recargar la página, los productos del carrito se mantienen.
-- **Despliegue:** [Fake Store](https://pruebas-tecnicas-jade.vercel.app/)
+- **Despliegue:** [Fake Store](https://fake-store-swart.vercel.app/)
