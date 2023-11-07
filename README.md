@@ -5,7 +5,6 @@ Instalar las dependencias.
 
 ```sh
 npm i
-prueba
 ```
 
 ## Introducción
