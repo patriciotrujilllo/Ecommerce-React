@@ -1,4 +1,6 @@
 # Fake Store-Ecommerce
+
+![Imagen de la pagina principal](./images/Main.png)
 ## Instalación
 
 Instalar las dependencias.
